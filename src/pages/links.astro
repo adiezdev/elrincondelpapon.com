@@ -1,0 +1,33 @@
+---
+import Card from '../components/Card.astro';
+import LastVideoTktk from '../components/LastVideoTktk.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import Layout from '../layouts/Layout.astro';
+import { playlists } from '../static/links-playlists';
+import { socliasIcons } from '../static/socials-icons'
+const pageTitle= "El Rincón del Papón";
+---
+<Layout title={pageTitle}>
+        <div class="flex flex-col items-center px-8 py-6">
+            <img class="h-32 w-32 object-cover rounded-full" src="/profile-img.png" alt="Imagen de perfil"/>
+            <h1 class="text-center text-4xl font-bold dark:text-white">{pageTitle}</h1>
+            <div class="flex flex-row justify-center">
+                {
+                    socliasIcons.map((social) => <SocialIcon href={social.href} name={social.name} icon={social.icon} />)
+                }
+            </div>
+        </div>
+        <div class="mx-10">
+            <h2 id="playlist" class="text-center text-xl dark:text-white">Playlist "Marchas de Semana Santa"</h2>
+            <p class="text-center dark:text-slate-400">Disponible en:</p>
+            <ul class="flex flex-col items-center content-start">
+                {
+                    playlists.map((playlist) =><Card href={playlist.href} title={playlist.name} platform={playlist.platform} img={playlist.img} color={playlist.color}/>)
+                }
+            </ul>
+        </div>
+        <div class="m-5">
+            <h2 id="last-video" class="text-center text-2xl dark:text-white">Último vídeo</h2>
+            <LastVideoTktk/>
+        </div>
+</Layout>
