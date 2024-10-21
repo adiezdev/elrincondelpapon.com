@@ -6,6 +6,6 @@ interface Props {
 }
 const { href, name, icon } = Astro.props;
 ---
-<a class="p-3" target="_blank" href={href} title={name}>
-    <img src=`./socialsIcons/${icon}` alt={name}/>
+<a class="flex justify-center items-center mx-2 p-3 size-[72px] rounded-2xl bg-[#404040]" target="_blank" href={href} title={name}>
+    <img class="size-8" src=`./socialsIcons/${icon}` alt={name}/>
 </a>

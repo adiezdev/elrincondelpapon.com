@@ -9,9 +9,10 @@ interface Props {
 
 const { href, title, platform, img, color} = Astro.props;
 ---
-<li class={`bg-gradient-to-r ${color} cursor-pointer flex flex-row justify-center link-card max-w-4xl w-11/12 h-24 border-solid border-2 rounded-md my-3`}>
+<li class={`bg-gradient-to-r ${color} cursor-pointer flex flex-row justify-center link-card max-w-96 w-11/12 h-24 border-solid border-2 rounded-md my-3`}>
 	<a target="_blank" class="flex flex-col items-center justify-center" href={href}>
 		<img class="w-16 px-2" src=`./playlists/${img}` alt={title}/>
 		<p class="dark:text-white text-lg">{platform}</p>
 	</a>
 </li>
+ 

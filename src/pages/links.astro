@@ -9,9 +9,13 @@ const pageTitle= "El Rincón del Papón";
 ---
 <Layout title={pageTitle}>
         <div class="flex flex-col items-center px-8 py-6">
-            <img class="h-32 w-32 object-cover rounded-full" src="/profile-img.png" alt="Imagen de perfil"/>
-            <h1 class="text-center text-4xl font-bold dark:text-white">{pageTitle}</h1>
-            <div class="flex flex-row justify-center">
+            <img class="h-40 w-40 object-cover rounded-full" src="/profile-img.png" alt="Imagen de perfil"/>
+            <div class="max-w-96">
+                <h1 class="text-4xl font-bold dark:text-white text-left mt-1">{pageTitle}</h1>
+                <p class="text-[#979797] text-left font-light mt-2">Portal cofrade independiente de la Semana Santa de Léon</p>
+            </div>
+            
+            <div class="flex flex-row mt-4">
                 {
                     socliasIcons.map((social) => <SocialIcon href={social.href} name={social.name} icon={social.icon} />)
                 }
@@ -19,15 +23,20 @@ const pageTitle= "El Rincón del Papón";
         </div>
         <div class="mx-10">
             <h2 id="playlist" class="text-center text-xl dark:text-white">Playlist "Marchas de Semana Santa"</h2>
-            <p class="text-center dark:text-slate-400">Disponible en:</p>
+            <p class="text-center dark:text-[#979797]">Disponible en:</p>
             <ul class="flex flex-col items-center content-start">
                 {
                     playlists.map((playlist) =><Card href={playlist.href} title={playlist.name} platform={playlist.platform} img={playlist.img} color={playlist.color}/>)
                 }
             </ul>
         </div>
-        <div class="m-5">
-            <h2 id="last-video" class="text-center text-2xl dark:text-white">Último vídeo</h2>
-            <LastVideoTktk/>
+        <div class="flex flex-col items-center m-3">
+            <p></p>
+            <div id="contador" class="text-lg w-80 rounded-2xl bg-[#404040] p-5 text-center dark:text-white"/>
         </div>
+    <script type="text/javascript" src="src/scripts/countDown.js" />
+    <script type="text/javascript" >
+        const fechaObjetivo = new Date('2025-04-11');
+        countDown(fechaObjetivo);
+    </script>
 </Layout>
