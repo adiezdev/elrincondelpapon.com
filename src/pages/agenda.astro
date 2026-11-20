@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { actos, titulo, subtitulo } from '../data/agenda';
+import { actos, permanentes, titulo, subtitulo } from '../data/agenda';
 
 const ordenados = [...actos].sort((a, b) => (a.d + a.h).localeCompare(b.d + b.h));
 const dias = [...new Set(ordenados.map((a) => a.d))];
@@ -48,6 +48,7 @@ const maps = (lugar: string) =>
       const mensaje =
         `📅 ${nombreDia(d).toUpperCase()}\n\n` +
         delDia.map((a) => `${a.h} · ${a.t} · ${a.hdad} · ${a.lugar}`).join('\n') +
+        (permanentes.length ? `\n\nTodo el finde:\n` + permanentes.map((p) => `${p.t} · ${p.lugar}`).join('\n') : '') +
         `\n\n👉 Agenda completa: elrincondelpapon.com/agenda`;
       return (
         <section class="day pt-5" data-day={d} hidden={i !== 0}>
@@ -57,6 +58,20 @@ const maps = (lugar: string) =>
               Copiar mensaje del día
             </button>
           </div>
+          {permanentes.length > 0 && (
+            <div class="mt-3 rounded-xl border border-[#404040] p-4">
+              <p class="text-sm font-semibold text-[rgb(224,204,250)]">Todo el fin de semana</p>
+              {permanentes.map((p) => (
+                <div class="ev mt-2" data-h="" data-text={[p.t, p.hdad, p.lugar, p.tipo, p.nota].join(' ').toLowerCase()}>
+                  <p class="font-semibold leading-snug">{p.t}</p>
+                  <p class="mt-0.5 text-[#979797]">
+                    {p.hdad} · <a class="underline hover:text-white" href={maps(p.lugar)} target="_blank" rel="noopener">{p.lugar}</a>
+                  </p>
+                  {p.nota && <p class="mt-1 text-sm">{p.nota}</p>}
+                </div>
+              ))}
+            </div>
+          )}
           <ol class="mt-2">
             {delDia.map((a) => (
               <li
@@ -144,7 +159,7 @@ const maps = (lugar: string) =>
   const sec = days.find((s) => s.dataset.day === hoy);
   if (sec) {
     let marcado = false;
-    sec.querySelectorAll<HTMLElement>('.ev').forEach((li) => {
+    sec.querySelectorAll<HTMLElement>('li.ev').forEach((li) => {
       const m = toMin(li.dataset.h ?? '00:00');
       if (m < nowMin - 90) li.classList.add('past');
       else if (!marcado && m >= nowMin - 30) {
