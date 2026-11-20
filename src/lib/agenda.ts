@@ -83,7 +83,7 @@ export function jsonLd(a: Agenda, url: string, image: string) {
     },
     organizer: { '@type': 'Organization', name: x.hdad },
     description: x.nota ?? `${x.tipo} · ${x.hdad}`,
-    image,
+    image: x.cartel ? new URL(x.cartel.src, url).href : image,
     url,
   }));
 }

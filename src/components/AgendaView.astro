@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { actosOrdenados, dias as getDias, maps, nombreDia, rangoLargo, type Agenda } from '../lib/agenda';
 
 interface Props {
@@ -65,6 +66,11 @@ const enlace = shareUrl.replace(/^https?:\/\//, '');
                   {p.hdad} · <a class="underline hover:text-white" href={maps(p.lugar)} target="_blank" rel="noopener">{p.lugar}</a>
                 </p>
                 {p.nota && <p class="mt-1 text-sm">{p.nota}</p>}
+                {p.cartel && (
+                  <a href={p.cartel.src} target="_blank" rel="noopener" class="mt-3 block max-w-xs" aria-label={`Ver cartel completo: ${p.t}`}>
+                    <Image src={p.cartel} alt={`Cartel: ${p.t}`} width={480} class="w-full rounded-lg border border-[#404040]" />
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -83,6 +89,11 @@ const enlace = shareUrl.replace(/^https?:\/\//, '');
                   {a.hdad} · <a class="underline hover:text-white" href={maps(a.lugar)} target="_blank" rel="noopener">{a.lugar}</a>
                 </p>
                 {a.nota && <p class="mt-1 text-sm">{a.nota}</p>}
+                {a.cartel && (
+                  <a href={a.cartel.src} target="_blank" rel="noopener" class="mt-3 block max-w-xs" aria-label={`Ver cartel completo: ${a.t}`}>
+                    <Image src={a.cartel} alt={`Cartel: ${a.t}`} width={480} class="w-full rounded-lg border border-[#404040]" />
+                  </a>
+                )}
                 <span class="mt-2 inline-block rounded-full bg-[#404040] px-3 py-0.5 text-xs font-semibold">{a.tipo}</span>
               </div>
             </li>

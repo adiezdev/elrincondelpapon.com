@@ -10,7 +10,8 @@
       "hdad": "Cofradía Santo Cristo del Desenclavo",
       "lugar": "Iglesia de Santa Marina la Real",
       "tipo": "Concierto",
-      "nota": "SM Santo Cristo del Desenclavo, BM Dulce Nombre de Jesús Nazareno y AM Cristo del Gran Poder. A favor de Cáritas parroquial. Entrada 3 €, a la venta desde una hora antes."
+      "nota": "SM Santo Cristo del Desenclavo, BM Dulce Nombre de Jesús Nazareno y AM Cristo del Gran Poder. A favor de Cáritas parroquial. Entrada 3 €, a la venta desde una hora antes.",
+      "cartel": "../../assets/agenda/2026-11-20/acordes-de-pasion.jpg"
     },
     {
       "d": "2026-11-20",
@@ -19,7 +20,8 @@
       "hdad": "BCT Ntra. Sra. de la Soledad y AM Santo Cristo de la Bienaventuranza",
       "lugar": "Capilla del Colegio Marista San José",
       "tipo": "Concierto",
-      "nota": "Con la actuación de María de León y Sanabria. A favor de SED. Donativo 3 €."
+      "nota": "Con la actuación de María de León y Sanabria. A favor de SED. Donativo 3 €.",
+      "cartel": "../../assets/agenda/2026-11-20/concierto-soledad-bienaventuranza.jpg"
     },
     {
       "d": "2026-11-21",
@@ -28,7 +30,8 @@
       "hdad": "Cofradía Santo Cristo de la Bienaventuranza",
       "lugar": "Parroquia de San Claudio",
       "tipo": "Culto",
-      "nota": "Con motivo de su onomástica."
+      "nota": "Con motivo de su onomástica.",
+      "cartel": "../../assets/agenda/2026-11-20/misa-piedad-bienaventuranza.jpg"
     },
     {
       "d": "2026-11-21",
@@ -37,7 +40,8 @@
       "hdad": "Cofradía de Ntro. Sr. Jesús de la Redención",
       "lugar": "Iglesia de San Marcos",
       "tipo": "Culto",
-      "nota": "Festividad de Cristo Rey."
+      "nota": "Festividad de Cristo Rey.",
+      "cartel": "../../assets/agenda/2026-11-20/misa-redencion.jpg"
     },
     {
       "d": "2026-11-21",
@@ -45,7 +49,8 @@
       "t": "XXIV Concierto de Santa Cecilia",
       "hdad": "Banda de Música de las Siete Palabras",
       "lugar": "Iglesia de San Juan y San Pedro de Renueva",
-      "tipo": "Concierto"
+      "tipo": "Concierto",
+      "cartel": "../../assets/agenda/2026-11-20/concierto-siete-palabras.jpg"
     },
     {
       "d": "2026-11-21",
@@ -53,7 +58,8 @@
       "t": "XXXI Concierto homenaje a Santa Cecilia",
       "hdad": "BCT Stmo. Cristo de la Victoria",
       "lugar": "Iglesia de Santa Marina la Real",
-      "tipo": "Concierto"
+      "tipo": "Concierto",
+      "cartel": "../../assets/agenda/2026-11-20/concierto-victoria.jpg"
     },
     {
       "d": "2026-11-22",
@@ -62,7 +68,8 @@
       "hdad": "Banda de Música Reino de León",
       "lugar": "Teatro San Francisco",
       "tipo": "Concierto",
-      "nota": "Organizan Cofradía del Stmo. Cristo de la Expiración y del Silencio y Pía Unión de San Antonio de Padua. Entradas en taquilla desde las 17:30 con donativo voluntario. Máximo 2 por persona."
+      "nota": "Organizan Cofradía del Stmo. Cristo de la Expiración y del Silencio y Pía Unión de San Antonio de Padua. Entradas en taquilla desde las 17:30 con donativo voluntario. Máximo 2 por persona.",
+      "cartel": "../../assets/agenda/2026-11-20/concierto-reino-de-leon.jpg"
     }
   ],
   "permanentes": [
@@ -71,7 +78,8 @@
       "hdad": "Cofradía de las Siete Palabras",
       "lugar": "Iglesia de San Salvador de Palat del Rey",
       "tipo": "Exposición",
-      "nota": "Del 13 de noviembre al 17 de enero. Acceso por calle Conde Luna. Entrada 1 €. Horarios en sietepalabras.com."
+      "nota": "Del 13 de noviembre al 17 de enero. Acceso por calle Conde Luna. Entrada 1 €. Horarios en sietepalabras.com.",
+      "cartel": "../../assets/agenda/2026-11-20/belen-siete-palabras.jpg"
     }
   ]
 }

@@ -9,6 +9,8 @@ Cada agenda es un JSON en `src/content/agenda/`. El nombre del archivo es su URL
 - La imagen de previsualización (`/og/agenda-<nombre>.png`, 1200x630) se genera sola en el build.
 - El esquema está en `src/content/config.ts`: si falta un campo o una fecha/hora está mal, el build falla.
 
+Carteles: guarda la imagen en `src/assets/agenda/<nombre-agenda>/` y pon en el acto `"cartel": "../../assets/agenda/<nombre-agenda>/archivo.jpg"`. Astro la optimiza a WebP sola.
+
 Para una agenda nueva: copia el último JSON, cámbiale el nombre a la fecha de inicio y edita `desde`, `hasta`, `actos` y `permanentes`.
 
 Si la previsualización de un enlace ya compartido no se actualiza, fuerza el refresco en
