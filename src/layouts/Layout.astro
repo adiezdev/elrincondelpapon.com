@@ -2,25 +2,72 @@
 import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
+	description?: string;
+	/** Ruta o URL de la imagen para previsualizaciones (ideal 1200x630) */
+	image?: string;
+	imageAlt?: string;
+	/** Ruta canónica, p. ej. /agenda/2026-11-20 */
+	canonical?: string;
+	type?: 'website' | 'article';
+	jsonLd?: unknown;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = 'Portal cofrade independiente de la Semana Santa de León.',
+	image = '/profile-img.png',
+	imageAlt = 'El Rincón del Papón',
+	canonical,
+	type = 'website',
+	jsonLd,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://elrincondelpapon.com');
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, site).href;
+const imageURL = new URL(image, site).href;
+const isPng = imageURL.endsWith('.png');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta name="theme-color" content="#262626" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Open Graph (WhatsApp, Instagram, Facebook, Telegram...) -->
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content="El Rincón del Papón" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:image:secure_url" content={imageURL} />
+		{isPng && <meta property="og:image:type" content="image/png" />}
+		{isPng && image !== '/profile-img.png' && <meta property="og:image:width" content="1200" />}
+		{isPng && image !== '/profile-img.png' && <meta property="og:image:height" content="630" />}
+		<meta property="og:image:alt" content={imageAlt} />
+
+		<!-- X / Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@rincondelpapon" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+
+		{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 	</head>
 	<body>
 		<slot />
+		<Footer />
 	</body>
-	<Footer />
 </html>
 <style is:global>
 	:root {

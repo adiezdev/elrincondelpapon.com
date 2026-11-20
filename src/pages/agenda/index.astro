@@ -1,0 +1,38 @@
+---
+// /agenda → siempre la agenda más reciente. Es el enlace fijo para compartir.
+import Layout from '../../layouts/Layout.astro';
+import AgendaView from '../../components/AgendaView.astro';
+import { descripcion, getAgendas, jsonLd, rangoCorto, rangoLargo, titlePage } from '../../lib/agenda';
+
+const agendas = await getAgendas();
+const agenda = agendas[0];
+const anteriores = agendas.slice(1);
+const site = Astro.site!;
+const path = `/agenda/${agenda.id}/`;
+const image = `/og/agenda-${agenda.id}.png`;
+---
+
+<Layout
+  title={titlePage(agenda)}
+  description={descripcion(agenda)}
+  image={image}
+  imageAlt={`Agenda cofrade de León, ${rangoCorto(agenda.data.desde, agenda.data.hasta)}`}
+  canonical="/agenda/"
+  jsonLd={jsonLd(agenda, new URL(path, site).href, new URL(image, site).href)}
+>
+  <AgendaView agenda={agenda} shareUrl={new URL('/agenda', site).href} />
+
+  {anteriores.length > 0 && (
+    <section class="mx-auto max-w-2xl px-5 pb-6 text-white">
+      <h2 class="text-xl font-bold">Agendas anteriores</h2>
+      <ul class="mt-2">
+        {anteriores.map((a) => (
+          <li class="border-b border-[#404040] py-3">
+            <a class="hover:underline" href={`/agenda/${a.id}/`}>{rangoLargo(a.data.desde, a.data.hasta)}</a>
+            <span class="text-[#979797]"> · {a.data.actos.length} actos</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</Layout>

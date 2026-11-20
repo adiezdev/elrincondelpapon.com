@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AgendaView from '../../components/AgendaView.astro';
+import { descripcion, getAgendas, jsonLd, rangoCorto, titlePage, type Agenda } from '../../lib/agenda';
+
+export async function getStaticPaths() {
+  const agendas = await getAgendas();
+  return agendas.map((agenda) => ({ params: { slug: agenda.id }, props: { agenda } }));
+}
+
+const { agenda } = Astro.props as { agenda: Agenda };
+const path = `/agenda/${agenda.id}/`;
+const image = `/og/agenda-${agenda.id}.png`;
+const site = Astro.site!;
+---
+
+<Layout
+  title={titlePage(agenda)}
+  description={descripcion(agenda)}
+  image={image}
+  imageAlt={`Agenda cofrade de León, ${rangoCorto(agenda.data.desde, agenda.data.hasta)}`}
+  canonical={path}
+  type="article"
+  jsonLd={jsonLd(agenda, new URL(path, site).href, new URL(image, site).href)}
+>
+  <AgendaView agenda={agenda} shareUrl={new URL(path, site).href} />
+</Layout>

@@ -1,3 +1,21 @@
+# El Rincón del Papón
+
+## Agendas cofrades
+
+Cada agenda es un JSON en `src/content/agenda/`. El nombre del archivo es su URL:
+`src/content/agenda/2026-11-20.json` → `elrincondelpapon.com/agenda/2026-11-20/`.
+
+- `elrincondelpapon.com/agenda/` muestra siempre la agenda más reciente (por `desde`). Es el enlace fijo para compartir.
+- La imagen de previsualización (`/og/agenda-<nombre>.png`, 1200x630) se genera sola en el build.
+- El esquema está en `src/content/config.ts`: si falta un campo o una fecha/hora está mal, el build falla.
+
+Para una agenda nueva: copia el último JSON, cámbiale el nombre a la fecha de inicio y edita `desde`, `hasta`, `actos` y `permanentes`.
+
+Si la previsualización de un enlace ya compartido no se actualiza, fuerza el refresco en
+https://developers.facebook.com/tools/debug/ (sirve también para WhatsApp e Instagram).
+
+---
+
 # Astro Starter Kit: Basics
 
 ```sh

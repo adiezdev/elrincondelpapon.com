@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elrincondelpapon.com/sitemap-index.xml
